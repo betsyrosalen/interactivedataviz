@@ -7,13 +7,13 @@
 #### What did you have trouble solving?
 
 ##### PC Install
-I used GitHub Desktop and read taht Git is installed automatically with GitHub Desktop, however it does not install Git Bash or add Git to the path so the command prompt was not recognizing Git.  I reinstalled Git from the link provided and then everything worked fine...
+I used GitHub Desktop and read that Git is installed automatically with GitHub Desktop, however it does not install Git Bash or add Git to the path so the command prompt was not recognizing Git.  I reinstalled Git from the link provided and then everything worked fine...
 
 ##### Mac Install
 Not done yet...
 
 #### What went easier than expected?
-1. Using GitHub Desktop and selecting the option "For my own prposes" during cloning automatically set up the fork behavior with the proper origin and upstream remote branches.
+1. Using GitHub Desktop and selecting the option "For my own prposes" during cloning automatically set up the fork behavior with the proper origin and upstream remote branches.  I had to check this using Command Prompt / Git Bash though because I wasn't sure it was right by looking at the settings in GitHub Desktop.
 2. Found this awesome Tufte CSS style sheet here: [https://github.com/edwardtufte/tufte-css].  I copied some of that into the stylesheet in this tutorial.
 
 #### What, if anything, is currently blocking you?
