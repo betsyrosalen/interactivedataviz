@@ -1,19 +1,71 @@
+html {background-color: ##fff9e6}
+* {
+  box-sizing: border-box;
+}
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 25px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
   padding: 1em;
 }
 
+h1, h2, h3, h4, h5, h6, p, tr {
+  color: #000066;
+  }
+
 h1 {
   font-size: 3em;
   margin: 0.25em 0;
 }
 
-h3 {
+h2 {
   font-size: 2em;
   margin: 0.25em 0;
 }
 
-p {
-  font-size: 1em;
+h3 {
+  font-size: 1.5em;
+  margin: 0.25em 0;
+}
+
+th {
+  font-size: 1.5em;
+}
+
+p, tr {
+  font-size: 1.25em;
+}
+
+table {
+  border-collapse:collapse;
+}
+
+td {
+  padding: 12px;
+}
+
+.Goldsworthy {
+  background-color: #e6f2ff;
+}
+.Klee {
+  background-color: #fff7e6;
+}
+.Dean {
+  background-color: #f9ecec;
+}
+.Max {
+  background-color: #e6eeff;
 }
