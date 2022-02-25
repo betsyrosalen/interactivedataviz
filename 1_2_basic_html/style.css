@@ -1,4 +1,15 @@
-html {background-color: ##fff9e6}
+/* centers the content on the screen */
+.content {
+  max-width: 2200px;
+  margin: auto;
+}
+
+/* centers all the text, images, buttons etc... */
+div {
+  text-align:center
+}
+
+html {background-color: #fff9e6}
 * {
   box-sizing: border-box;
 }
@@ -41,31 +52,43 @@ h3 {
   margin: 0.25em 0;
 }
 
+table {
+  border-collapse:collapse;
+  margin-left: auto;
+  margin-right: auto;
+  text-align:left
+}
+
 th {
   font-size: 1.5em;
+  background-color:	#e8d5b0;
 }
 
 p, tr {
   font-size: 1.25em;
 }
 
-table {
-  border-collapse:collapse;
-}
-
 td {
   padding: 12px;
+}
+
+.thumb {
+  text-align:center;
 }
 
 .Goldsworthy {
   background-color: #e6f2ff;
 }
 .Klee {
-  background-color: #fff7e6;
+  background-color:  #ffeecc;
 }
 .Dean {
   background-color: #f9ecec;
 }
 .Max {
   background-color: #e6eeff;
+}
+
+caption {
+  caption-side: bottom;
 }

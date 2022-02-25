@@ -1,8 +1,19 @@
+/* centers the content on the screen */
+.content {
+  max-width: 600px;
+  margin: auto;
+}
+
+/* centers all the text, images, buttons etc... */
+div {
+  text-align:center
+}
+
 body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
   padding: 1em;
-  color: #006666;
+  color: #006666;  /* for all text */
 }
 
 h1 {
@@ -14,6 +25,8 @@ h3 {
   margin: 0.25em 0;
 }
 
+/* need this or the text that is 
+returned by JS does not get styled correctly */
 #number {
   font-size: 2em;
   margin: 0.25em 0;
@@ -28,6 +41,8 @@ section {
   padding: 2em 0;
 }
 
+/* not sure what all of this does.  
+copied it off the web and tweaked it */
 button {
   display: inline-block;
   background-color: #ecc6ec;
