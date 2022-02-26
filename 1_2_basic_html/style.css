@@ -56,12 +56,12 @@ table {
   border-collapse:collapse;
   margin-left: auto;
   margin-right: auto;
-  text-align:left
 }
 
 th {
-  font-size: 1.5em;
+  font-size: 1.15em;
   background-color:	#e8d5b0;
+  padding: 10px 5px 10px 30px;
 }
 
 p, tr {
@@ -69,15 +69,21 @@ p, tr {
 }
 
 td {
-  padding: 12px;
+  padding: 10px 5px 10px 30px;
 }
 
 .thumb {
   text-align:center;
 }
 
+.artist {
+  font-weight: bold;
+  text-align: left;
+  padding: 10px 5px 10px 30px;
+}
+
 .Goldsworthy {
-  background-color: #e6f2ff;
+  background-color: #eef6ff;
 }
 .Klee {
   background-color:  #ffeecc;
@@ -86,7 +92,13 @@ td {
   background-color: #f9ecec;
 }
 .Max {
-  background-color: #e6eeff;
+  background-color: #ebf1fd;
+}
+.Lubalin {
+  background-color: #fffefa;
+}
+.Glaser {
+  background-color: #fff0f0;
 }
 
 caption {
