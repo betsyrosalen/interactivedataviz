@@ -1,7 +1,7 @@
 /* CONSTANTS AND GLOBALS */
 const width = window.innerWidth *.8 ;
 const height = window.innerHeight * .6;
-const margin = {top: 20, right: 30, bottom: 80, left: 60};
+const margin = {top: 20, right: 30, bottom: 80, left: 80};
 
 /* LOAD DATA */
 d3.csv('../data/squirrelActivities.csv', d3.autoType)
@@ -21,7 +21,7 @@ d3.csv('../data/squirrelActivities.csv', d3.autoType)
     .range([margin.top, height-margin.bottom]) // visual variable
     .paddingInner(.15);
 
-  const colorScale = d3.scaleOrdinal(d3.schemeAccent)
+  const colorScale = d3.scaleOrdinal(d3.schemeCategory10)
 /*     .domain()
     .range() */
 
@@ -41,12 +41,16 @@ d3.csv('../data/squirrelActivities.csv', d3.autoType)
   const xAxisGroup = svg.append("g")
     .attr("class", "xAxis")
     .attr("transform", `translate(0,${height-margin.bottom +10})`)
-    .call(xAxis);
+    .call(xAxis)
+    .selectAll("text")
+      .style("font-size", "1.5em");
 
   const yAxisGroup = svg.append("g")
     .attr("class", "yAxis")
     .attr("transform", `translate(${margin.left-1}, 0)`)
-    .call(yAxis);
+    .call(yAxis)
+    .selectAll("text")
+      .style("font-size", "1.5em");
 
 
   /*     svg.append("g")
