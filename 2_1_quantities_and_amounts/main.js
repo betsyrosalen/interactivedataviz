@@ -21,6 +21,10 @@ d3.csv('../data/squirrelActivities.csv', d3.autoType)
     .range([margin.top, height-margin.bottom]) // visual variable
     .paddingInner(.15);
 
+  const colorScale = d3.scaleOrdinal(d3.schemeAccent)
+/*     .domain()
+    .range() */
+
   /* AXES */
 
   const xAxis = d3.axisBottom(xScale);
@@ -41,7 +45,7 @@ d3.csv('../data/squirrelActivities.csv', d3.autoType)
 
   const yAxisGroup = svg.append("g")
     .attr("class", "yAxis")
-    .attr("transform", `translate(${margin.left}, 0)`)
+    .attr("transform", `translate(${margin.left-1}, 0)`)
     .call(yAxis);
 
 
@@ -57,6 +61,7 @@ d3.csv('../data/squirrelActivities.csv', d3.autoType)
     .attr("y", d => yScale(d.activity))
     .attr("width", d => xScale(d.count))
     .attr("height", yScale.bandwidth())
+    .attr("fill", d => colorScale(d.activity))
     ;
 
 })
