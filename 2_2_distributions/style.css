@@ -1,7 +1,18 @@
 body {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 16px;
   padding: 1em;
+  max-width: 2200px;
+  width: 85%;
+  margin: auto;
+  background: rgba(255, 252, 223, 0.5);
+  text-align:center
+}
+}
+
+#container {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 h1 {
