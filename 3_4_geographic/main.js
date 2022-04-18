@@ -63,16 +63,16 @@ function init() {
    .attr("height", height);
 
  svg
-   .selectAll(".state")
+   .selectAll(".county")
    // all of the features of the geojson, meaning all the states as individuals
    .data(state.geojson.features)
    .join("path")
    .attr("d", path)
-   .attr("class", "state")
+   .attr("class", "county")
    .attr("fill", "steelblue")
    .on("mouseover", (mouseEvent, d) => {
      // when the mouse rolls over this feature, do this
-     state.hover["state"] = d.properties.NAME;
+     state.hover["County"] = d.properties.name;
      draw(); // re-call the draw function when we set a new hoveredState
    });
 
