@@ -12,6 +12,7 @@ let svg;
 * */
 let state = {
     geojson: null,
+    markets: null,
     extremes: null,
     hover: {
       latitude: null,
@@ -25,12 +26,21 @@ let state = {
 * LOAD DATA
 * Using a Promise.all([]), we can load more than one dataset at a time
 * */
+
+/* Promise.all([
+    d3.json("../data/usState.json"),
+    d3.csv("../data/stateCapitals.csv", d3.autoType),
+  ]).then(([geojson, capitals]) => {
+ */
 Promise.all([
- d3.json("../data/NYC zipcode geodata/us-county-boundaries (NY-NJ-CT).geojson")
-]).then(([geojson]) => {
+ d3.json("../data/NYC zipcode geodata/us-county-boundaries(NY).geojson"),
+ d3.json("https://data.ny.gov/resource/qq4h-8p86.json") // https://data.ny.gov/Economic-Development/Farmers-Markets-in-New-York-State/qq4h-8p86
+]).then(([geojson, farmMarkets]) => {
  state.geojson = geojson;
+ state.markets = farmMarkets;
  init();
 });
+
 
 /**
 * INITIALIZING FUNCTION
@@ -41,6 +51,9 @@ function init() {
  // so they can be locally scoped to init()
  const projection = d3.geoAlbersUsa().fitSize([width, height], state.geojson);
  const path = d3.geoPath().projection(projection);
+
+ console.log("geojson: ", state.geojson);
+ console.log("markets: ", state.markets);
 
  // create an svg element in our main `d3-container` element
  svg = d3
@@ -56,7 +69,7 @@ function init() {
    .join("path")
    .attr("d", path)
    .attr("class", "state")
-   .attr("fill", "rgb(163, 205, 171)")
+   .attr("fill", "steelblue")
    .on("mouseover", (mouseEvent, d) => {
      // when the mouse rolls over this feature, do this
      state.hover["state"] = d.properties.NAME;
@@ -65,14 +78,13 @@ function init() {
 
  // EXAMPLE 1: going from Lat-Long => x, y
  // for how to position a dot
- const farmMarkets = d3.json("https://data.ny.gov/resource/qq4h-8p86.json");
- console.log("state: ", farmMarkets);
+
  svg
    .selectAll("circle")
-   .data([farmMarkets])
+   .data(state.markets)
    .join("circle")
-   .attr("r", 10)
-   .attr("fill", "steelblue")
+   .attr("r",3)
+   .attr("fill", "rgb(163, 205, 171)")
    .attr("transform", d => {
      const [x, y] = projection([d.longitude, d.latitude]);
      return `translate(${x}, ${y})`;
