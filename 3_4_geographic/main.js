@@ -13,11 +13,11 @@ let svg;
 let state = {
     geojson: null,
     markets: null,
-    extremes: null,
+    // extremes: null,
     hover: {
-      latitude: null,
-      longitude: null,
-      county: null,
+      Latitude: null,
+      Longitude: null,
+      County: null,
     },
 };
    
@@ -26,12 +26,6 @@ let state = {
 * LOAD DATA
 * Using a Promise.all([]), we can load more than one dataset at a time
 * */
-
-/* Promise.all([
-    d3.json("../data/usState.json"),
-    d3.csv("../data/stateCapitals.csv", d3.autoType),
-  ]).then(([geojson, capitals]) => {
- */
 Promise.all([
  d3.json("../data/NYC zipcode geodata/us-county-boundaries(NY).geojson"),
  d3.json("https://data.ny.gov/resource/qq4h-8p86.json") // https://data.ny.gov/Economic-Development/Farmers-Markets-in-New-York-State/qq4h-8p86
@@ -49,8 +43,8 @@ Promise.all([
 function init() {
   // our projection and path are only defined once, and we don't need to access them in the draw function,
  // so they can be locally scoped to init()
- const projection = d3.geoAlbersUsa().fitSize([width, height], state.geojson);
- const path = d3.geoPath().projection(projection);
+ const projctn = d3.geoAlbersUsa().fitSize([width, height], state.geojson);
+ const path = d3.geoPath().projection(projctn);
 
  console.log("geojson: ", state.geojson);
  console.log("markets: ", state.markets);
@@ -64,7 +58,7 @@ function init() {
 
  svg
    .selectAll(".county")
-   // all of the features of the geojson, meaning all the states as individuals
+   // all of the features of the geojson, meaning all the counties as individuals
    .data(state.geojson.features)
    .join("path")
    .attr("d", path)
@@ -78,27 +72,27 @@ function init() {
 
  // EXAMPLE 1: going from Lat-Long => x, y
  // for how to position a dot
-
  svg
    .selectAll("circle")
    .data(state.markets)
    .join("circle")
-   .attr("r",3)
+   .attr("r", 5)
    .attr("fill", "rgb(163, 205, 171)")
+   .style("fill-opacity", 0.65)
    .attr("transform", d => {
-     const [x, y] = projection([d.longitude, d.latitude]);
+     const [x, y] = projctn([d.longitude, d.latitude]);
      return `translate(${x}, ${y})`;
    });
 
    // EXAMPLE 2: going from x, y => lat-long
  // this triggers any movement at all while on the svg
- svg.on("mousemove", (e) => {
+ svg.on("mousemove", (mouseEvent) => {
     // we can d3.pointer to tell us the exact x and y positions of our cursor
-    const [mx, my] = d3.pointer(e);
+    const [mx, my] = d3.pointer(mouseEvent);
     // projection can be inverted to return [lat, long] from [x, y] in pixels
-    const proj = projection.invert([mx, my]);
-    state.hover["longitude"] = proj[0];
-    state.hover["latitude"] = proj[1];
+    const proj = projctn.invert([mx, my]);
+    state.hover["Longitude"] = proj[0];
+    state.hover["Latitude"] = proj[1];
     draw();
   });
 
@@ -123,6 +117,7 @@ function draw() {
         // each d is [key, value] pair
         d[1] // check if value exist
           ? `${d[0]}: ${d[1]}` // if they do, fill them in
-          : null // otherwise, show nothing
+          // : null // otherwise, show nothing
+          : `${d[0]}:` // otherwise, show nothing
     );
 }
