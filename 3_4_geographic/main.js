@@ -2,7 +2,7 @@
  * CONSTANTS AND GLOBALS
  * */
 const width = window.innerWidth * 0.7,
-height = window.innerHeight * 0.9,
+height = window.innerHeight * 0.8,
 margin = { top: 20, bottom: 20, left: 20, right: 20 };
 
 let svg;
@@ -28,7 +28,8 @@ let state = {
 * */
 Promise.all([
  d3.json("../data/NYC zipcode geodata/us-county-boundaries(NY).geojson"),
- d3.json("https://data.ny.gov/resource/qq4h-8p86.json") // https://data.ny.gov/Economic-Development/Farmers-Markets-in-New-York-State/qq4h-8p86
+//  d3.json("https://data.ny.gov/resource/qq4h-8p86.json") // https://data.ny.gov/Economic-Development/Farmers-Markets-in-New-York-State/qq4h-8p86
+d3.csv("../data/NYC zipcode geodata/2020_Farmers_Markets.csv", d3.autoType),
 ]).then(([geojson, farmMarkets]) => {
  state.geojson = geojson;
  state.markets = farmMarkets;
