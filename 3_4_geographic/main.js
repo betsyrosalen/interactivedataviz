@@ -27,9 +27,9 @@ let state = {
 * Using a Promise.all([]), we can load more than one dataset at a time
 * */
 Promise.all([
- d3.json("../data/NYC zipcode geodata/us-county-boundaries(NY).geojson"),
+ d3.json("../data/geodata/us-county-boundaries(NY).geojson"),
 //  d3.json("https://data.ny.gov/resource/qq4h-8p86.json") // https://data.ny.gov/Economic-Development/Farmers-Markets-in-New-York-State/qq4h-8p86
-d3.csv("../data/NYC zipcode geodata/2020_Farmers_Markets.csv", d3.autoType),
+d3.csv("../data/geodata/2020_Farmers_Markets.csv", d3.autoType),
 ]).then(([geojson, farmMarkets]) => {
  state.geojson = geojson;
  state.markets = farmMarkets;
